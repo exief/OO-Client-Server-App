@@ -16,11 +16,12 @@ public:
 	bool operator==(const Server& rhs) const;
 	bool operator!=(const Server& rhs) const;
 	
-	void send(const std::string& msg);
+	void send(const std::string& msg) const;
 	void receive();
 protected:
 private:
 	struct sockaddr_in socketAddress_;
 	int fd_;
+	int readsize_;
 };
 #endif
