@@ -22,6 +22,6 @@ protected:
 private:
 	struct sockaddr_in socketAddress_;
 	int fd_;
-	int readsize_;
+	int readsize_ = 0;
 };
 #endif
