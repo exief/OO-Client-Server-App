@@ -10,6 +10,7 @@ public:
 	Server(const int& port);
 	Server(const std::string& ip, const int& port);
 	Server(const Server& other);
+	~Server();
 	
 	Server& operator=(const Server& rhs);
 	
