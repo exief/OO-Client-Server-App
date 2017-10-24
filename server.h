@@ -6,9 +6,7 @@
 
 class Server {
 public:
-	Server();
-	Server(const int& port);
-	Server(const std::string& ip, const int& port);
+	Server(const int& port = 5000);
 	Server(const Server& other);
 	~Server();
 	
