@@ -1,4 +1,5 @@
 #include "server.h"
+#include <sys/socket.h>
 
 Server::Server(const int& port = 5000) {
 	this->fd_ = socket(AF_INET, SOCK_STREAM, 0);
@@ -18,7 +19,7 @@ Server::~Server() {
 	close(this->fd_);	
 }
 	
-Server::Server& operator=(const Server& rhs) {
+Server& Server::operator=(const Server& rhs) {
 	this->fd_ = socket(AF_INET, SOCK_STREAM, 0);
 	
 	this->socketAddress_.sin_family = AF_INET;
@@ -28,7 +29,7 @@ Server::Server& operator=(const Server& rhs) {
 	bind(this->fd_, (struct sockaddr*) &this->socketAddress_, sizeof(this->socketAddress_));
 }
 	
-Server::bool operator==(const Server& rhs) const {
+bool Server::operator==(const Server& rhs) const {
 	if(this->socketAddress_.sin_family != rhs.socketAddress_.sin_family) {
 		return false;	
 	} else if (this->socketAddress_.sin_addr.s_addr != rhs.socketAddress_.sin_addr.s_addr) {
@@ -39,7 +40,7 @@ Server::bool operator==(const Server& rhs) const {
 	return true;
 }
 
-Server::bool operator!=(const Server& rhs) const { 
+bool Server::operator!=(const Server& rhs) const { 
 	return !(*this == rhs);
 }
 	
