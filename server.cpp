@@ -15,7 +15,7 @@ Server::Server(const Server& other) {
 }
 
 Server::~Server() {
-	
+	close(this->fd_);	
 }
 	
 Server::Server& operator=(const Server& rhs) {
@@ -57,4 +57,8 @@ void Server::send(const std::string& msg) const {
 
 void Server::receive() {
 
+}
+
+void Server::accept() {
+	
 }
