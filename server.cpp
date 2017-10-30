@@ -1,7 +1,10 @@
 #include "server.h"
 #include <sys/socket.h>
+#include <netinet/in.h>
 
-Server::Server(const int& port = 5000) {
+#define MAX_CONNECTIONS 10
+
+Server::Server(const int& port) {
 	this->fd_ = socket(AF_INET, SOCK_STREAM, 0);
 	
 	this->socketAddress_.sin_family = AF_INET;
@@ -48,7 +51,7 @@ void Server::listen() {
 	listen(this->fd_, MAX_CONNECTIONS);
 }
 
-void Server::send(const std::string& msg) const {
+void Server::sender(const std::string& msg) const {
 	try {
 		if(send(this->fd_, msg.c_str(), msg.length(), 0) < 0) throw -1;
 	} catch (int e) {
