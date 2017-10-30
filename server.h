@@ -16,6 +16,7 @@ public:
 	bool operator!=(const Server& rhs) const;
 	
 	void listen();
+	void accept();
 	void send(const std::string& msg) const;
 	void receive();
 protected:
